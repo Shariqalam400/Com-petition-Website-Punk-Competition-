@@ -4,4 +4,4 @@ node_modules/
 # Ignore environment file
 .env
 serviceAccountKey.json
-package.json
+
