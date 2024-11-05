@@ -22,32 +22,40 @@ cardElement.mount('#card-element');
 const form = document.getElementById('payment-form');
 
 const StripeFunction = async (event) => {
-    event.preventDefault(); // Prevent the form from reloading the page
+    event.preventDefault(); // Form reload hone se rokain
 
-    // Fetch the client secret from the backend
-    const response = await fetch('/.netlify/functions/server', { // Update the endpoint to match Vercel's serverless function route
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ Title, Description, Amount, Image }),  // Send product data to backend
-    });
+    try {
+        // Backend se client secret fetch karen
+        const response = await fetch('/.netlify/functions/server', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ Title, Description, Amount, Image }),  // Product data backend ko send karen
+        });
 
-    const { clientSecret } = await response.json();
+        if (!response.ok) {
+            throw new Error('Failed to fetch client secret');
+        }
 
-    // Confirm the payment with Stripe
-    const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: { card: cardElement },
-    });
+        const { clientSecret } = await response.json();
 
-    if (error) {
-        document.getElementById('payment-result').textContent = `Payment failed: ${error.message}`;
-    } else {
-        document.getElementById('payment-result').textContent = 'Payment successful!';
-        // Show the modal after successful payment
-        paymentModal.style.display = 'flex';
+        // Stripe ke sath payment confirm karen
+        const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: { card: cardElement },
+        });
+
+        if (error) {
+            throw new Error(`Payment failed: ${error.message}`);
+        } else {
+            document.getElementById('payment-result').textContent = 'Payment successful!';
+            paymentModal.style.display = 'flex'; // Successful payment ke baad modal show karain
+        }
+    } catch (err) {
+        document.getElementById('payment-result').textContent = `Error: ${err.message}`;
     }
 };
 
 form.addEventListener('submit', StripeFunction);
+
 
 
 // Ticket number and answer validation in modal
