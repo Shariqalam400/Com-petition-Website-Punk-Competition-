@@ -25,7 +25,7 @@ const StripeFunction = async (event) => {
     event.preventDefault(); // Prevent the form from reloading the page
 
     // Fetch the client secret from the backend
-    const response = await fetch('/api/server', { // Update the endpoint to match Vercel's serverless function route
+    const response = await fetch('/.netlify/functions/server', { // Update the endpoint to match Vercel's serverless function route
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ Title, Description, Amount, Image }),  // Send product data to backend

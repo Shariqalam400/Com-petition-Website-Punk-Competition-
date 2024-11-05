@@ -21,7 +21,6 @@ module.exports = async (req, res) => {
                 image: Image
             }
         });
-
         // clientSecret frontend ko bhejna
         res.json({ clientSecret: paymentIntent.client_secret });
     } catch (error) {
