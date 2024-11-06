@@ -1,8 +1,3 @@
 [build]
-  functions = "netlify/functions"  # Yeh Netlify ko bata raha hai ke functions kaha hain
-  publish = "public"               # Yeh static site ka root folder set kar raha hai
-
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
+  functions = "netlify/functions"  # Netlify functions ka path
+  publish = "public"               # Static site files ka root folder
