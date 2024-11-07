@@ -1,4 +1,4 @@
-import { auth, createUserWithEmailAndPassword ,db, collection, addDoc ,doc , setDoc , onAuthStateChanged} from "/firebase.js";
+import { auth, createUserWithEmailAndPassword ,db, collection, addDoc ,doc , setDoc , onAuthStateChanged} from "../firebase.js";
 
 let Fname = document.getElementById("Fname")
 let Uname = document.getElementById("Uname")

@@ -1,4 +1,4 @@
-import { db, collection, addDoc, serverTimestamp, doc, updateDoc, onAuthStateChanged, getDocs, auth } from "/firebase.js";
+import { db, collection, addDoc, serverTimestamp, doc, updateDoc, onAuthStateChanged, getDocs, auth } from "../firebase.js";
 
 // Retrieve stored data from localStorage
 const storedData = JSON.parse(localStorage.getItem('payId'));
@@ -26,7 +26,7 @@ const StripeFunction = async (event) => {
 
     try {
         // Backend se client secret fetch karen
-        const response = await fetch('/.netlify/functions/server', {
+        const response = await fetch('/api/server', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ Title, Description, Amount, Image }),  // Product data backend ko send karen

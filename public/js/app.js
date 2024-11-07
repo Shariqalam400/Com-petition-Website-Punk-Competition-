@@ -7,7 +7,7 @@ import {
   auth,
   onAuthStateChanged,
   signOut,
-} from "/firebase.js";
+} from "../firebase.js";
 
 let AllPost = document.getElementById("allCompetition");
 let carouselInner = document.getElementById("carousel-inner");

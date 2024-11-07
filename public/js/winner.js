@@ -1,4 +1,4 @@
-import {db, collection, getDocs } from "/firebase.js"; 
+import {db, collection, getDocs } from "../firebase.js"; 
 
 let ShowCard = document.getElementById("ShowCard")
 const AllWinnerPost = async () => {

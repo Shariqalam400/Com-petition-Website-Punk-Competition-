@@ -1,4 +1,4 @@
-import {db, collection, addDoc , serverTimestamp } from "/firebase.js"; 
+import {db, collection, addDoc , serverTimestamp } from "../firebase.js"; 
 
 
 let sendBtn = document.getElementById('sendBtn')

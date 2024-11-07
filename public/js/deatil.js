@@ -1,5 +1,5 @@
 
-import {db, doc, getDoc ,auth ,  onAuthStateChanged} from "/firebase.js"; 
+import {db, doc, getDoc ,auth ,  onAuthStateChanged} from "../firebase.js"; 
 
 
 let detailId = localStorage.getItem('cardId')

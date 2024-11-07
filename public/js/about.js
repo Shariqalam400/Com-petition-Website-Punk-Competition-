@@ -1,4 +1,4 @@
-import {db, collection , doc, getDoc } from "/firebase.js"; 
+import {db, collection , doc, getDoc } from "../firebase.js"; 
 
 let heading = document.getElementById("heading");
 let para= document.getElementById("para")

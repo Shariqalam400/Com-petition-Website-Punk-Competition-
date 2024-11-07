@@ -1,5 +1,5 @@
 
-import {auth ,  onAuthStateChanged ,signOut} from "../../../../../firebase.js"; 
+import {auth ,  onAuthStateChanged ,signOut} from "../firebase.js"; 
 let logout = document.querySelector('.logout')
 const CurrerntUser = ()=>{
     onAuthStateChanged(auth, (user) => {
