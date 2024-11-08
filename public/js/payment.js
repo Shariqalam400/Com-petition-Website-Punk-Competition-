@@ -58,20 +58,19 @@ form.addEventListener('submit', StripeFunction);
 
 
 
-// Ticket number and answer validation in modal
+// Modal submit function to validate ticket and answer, and update Firestore
 
 let modalSubmit = document.getElementById('submit-details');
-const modalSubmitFuntion = async () => {
-    event.preventDefault()
+const modalSubmitFuntion = async (event) => {
+    event.preventDefault();
     const userTicket = document.getElementById('ticket-number').value;
     const userAnswer = document.getElementById('question-answer').value;
-    let UserId = localStorage.getItem('cardId')
-    let filterNumber = Ticket.includes(userTicket)
+    let UserId = localStorage.getItem('cardId');
+    let filterNumber = Ticket.includes(userTicket);
     console.log(filterNumber);
 
-    // Validate ticket number and answer from localStorage
     if (filterNumber && userAnswer) {
-        // Success message
+        // Show success message
         Toastify({
             text: 'Ticket verified! Withdrawal details will be live soon.',
             duration: 3000,
@@ -80,32 +79,46 @@ const modalSubmitFuntion = async () => {
             style: { background: 'linear-gradient(to right, #00b09b, #96c93d)' }
         }).showToast();
 
+        // Remove ticket from the list
         let ticketArray = Ticket.split(',').map(item => item.trim());
-
-        ticketArray = ticketArray.filter(item => item !== userTicket);  // 333 ko remove kar diya
-
+        ticketArray = ticketArray.filter(item => item !== userTicket);
         let updatedTicketString = ticketArray.join(', ');
-        const washingtonRef = doc(db, "post", UserId);
-console.log(washingtonRef);
 
-        await updateDoc(washingtonRef, {
-            Ticket: updatedTicketString
-        });
-        // Close modal and redirect to withdrawal details page
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const loggedInEmail = user.email;
-                console.log("User is logged in with Email:", loggedInEmail);
-                AllUserDataShow(loggedInEmail, userTicket, userAnswer);
-                setTimeout(() => {
-                    window.location.href = "/public/index.html";
-                }, 2000);
-            } else {
-                console.log("No user is currently logged in");
+        // Update Firestore using transaction
+        const userDocRef = doc(db, "post", UserId);
+
+        await runTransaction(db, async (transaction) => {
+            const userDoc = await transaction.get(userDocRef);
+
+            if (!userDoc.exists()) {
+                throw new Error("User document does not exist.");
             }
+
+            // Update tickets in Firestore
+            transaction.update(userDocRef, {
+                Ticket: updatedTicketString
+            });
+
+            console.log("Tickets updated in Firestore.");
+
+            // Continue with user data processing after ticket update
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    const loggedInEmail = user.email;
+                    console.log("User is logged in with Email:", loggedInEmail);
+                    AllUserDataShow(loggedInEmail, userTicket, userAnswer);
+
+                    setTimeout(() => {
+                        window.location.href = "/public/index.html";
+                    }, 2000);
+                } else {
+                    console.log("No user is currently logged in");
+                }
+            });
         });
+
     } else {
-        // Error message
+        // Show error message if ticket or answer is invalid
         Toastify({
             text: 'Invalid ticket number or wrong answer.',
             duration: 3000,
@@ -114,50 +127,44 @@ console.log(washingtonRef);
             style: { background: 'linear-gradient(to right, #ff5f6d, #ffc371)' }
         }).showToast();
     }
-}
+};
 
-modalSubmit.addEventListener('click', modalSubmitFuntion)
+modalSubmit.addEventListener('click', modalSubmitFuntion);
 
-
-
+// Function to fetch user data and initiate purchase data addition
 const AllUserDataShow = async (loggedInEmail, userTicket, userAnswer) => {
     try {
         const querySnapshot = await getDocs(collection(db, "userData"));
-
-        const matchedUser = querySnapshot.docs.find((doc) => {
-            const { email } = doc.data();
-            return email === loggedInEmail;
-        });
+        const matchedUser = querySnapshot.docs.find((doc) => doc.data().email === loggedInEmail);
 
         if (matchedUser) {
             const userData = matchedUser.data();
-            addPurchaseData(userData, userTicket, userAnswer)
-
+            addPurchaseData(userData, userTicket, userAnswer);
         } else {
             console.log("No matching user found with this email.");
         }
-
     } catch (error) {
         console.log("Error fetching data:", error);
     }
 };
 
-
+// Function to add purchase data to Firestore
 const addPurchaseData = async (data, userTicket, userAnswer) => {
     const { Fname, Uname, email, password, phone } = data;
+
     try {
         const docRef = await addDoc(collection(db, "users"), {
-            Fname: Fname,
-            Uname: Uname,
-            email: email,
-            password: password,
-            phone: phone,
-            Title: Title,
-            Description: Description,
-            Question: Question,
-            Amount: Amount,
+            Fname,
+            Uname,
+            email,
+            password,
+            phone,
+            Title,
+            Description,
+            Question,
+            Amount,
             Ticket: userTicket,
-            Image: Image,
+            Image,
             Answer: userAnswer,
             purchaseTime: serverTimestamp(),
         });
@@ -165,4 +172,4 @@ const addPurchaseData = async (data, userTicket, userAnswer) => {
     } catch (e) {
         console.error("Error adding document: ", e);
     }
-}
+};
