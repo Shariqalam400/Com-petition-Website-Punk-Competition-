@@ -12,18 +12,22 @@
 </head>
 
 <body>
-  <div id="checkout-container">
-    <h1 id="product-title"></h1>
-    <p id="product-description"></p>
-    <img id="product-image" src="" alt="Product Image" />
-    <p>Amount: <span id="product-amount"></span> GBP</p>
-    <form id="payment-form">
-      <div id="card-element"></div>
-      <button type="submit" id="submit-button">Pay Now</button>
-    </form>
-    <div id="payment-result"></div>
+  <div id="error-empty" class="error-empty">
+      <p>You already purchased a ticket please again click a card</p>
   </div>
-
+  <div id="main-checkout-container" class="main-checkout-container">
+    <div id="checkout-container">
+      <h1 id="product-title"></h1>
+      <p id="product-description"></p>
+      <img id="product-image" src="" alt="Product Image" />
+      <p>Amount: <span id="product-amount"></span> GBP</p>
+      <form id="payment-form">
+        <div id="card-element"></div>
+        <button type="submit" id="submit-button">Pay Now</button>
+      </form>
+      <div id="payment-result"></div>
+    </div>
+  </div>
   <div id="paymentModal" class="custom-modal">
     <div class="custom-modal-content">
       <h2>Enter Ticket Details</h2>
