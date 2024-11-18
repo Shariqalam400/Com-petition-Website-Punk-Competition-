@@ -6,7 +6,13 @@ const { Title, Description, Amount, Image, Ticket , Question} = storedData;
 console.log(Ticket);
 let paymentModal = document.getElementById('paymentModal');
 let emptyError = document.getElementById('error-empty')
-let checkOutContainer = document.getElementById('main-checkout-container')
+let checkOutContainer = document.getElementById('main-checkout-container');
+window.onload = function () {
+    let MainLoader = document.getElementById("MainLoader");
+    let mainContentWrapper = document.getElementById("mainContentWrapper");
+    MainLoader.style.display = "none"; // Hide loader
+    mainContentWrapper.style.display = "block"; // Show content
+  };
 if (storedData === '') {
     checkOutContainer.style.display = 'none';
     emptyError.style.display = 'flex';

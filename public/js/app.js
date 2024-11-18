@@ -17,6 +17,13 @@ let login = document.getElementById("login");
 let logout = document.getElementById("logout");
 let loginLap = document.getElementById("loginLap");
 let logoutLap = document.getElementById("logoutLap");
+
+window.onload = function () {
+  let MainLoader = document.getElementById("MainLoader");
+  let mainContentWrapper = document.getElementById("mainContentWrapper");
+  MainLoader.style.display = "none"; // Hide loader
+  mainContentWrapper.style.display = "block"; // Show content
+};
 logout.style.display = "none";
 logoutLap.style.display = "none";
 

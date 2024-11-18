@@ -7,6 +7,13 @@ let loader = document.getElementById("loader")
 let fullDescription = document.getElementById("fullDescription")
 let raedMoreBtn = document.getElementById("raedMoreBtn")
 
+window.onload = function () {
+  let MainLoader = document.getElementById("MainLoader");
+  let mainContentWrapper = document.getElementById("mainContentWrapper");
+  MainLoader.style.display = "none"; // Hide loader
+  mainContentWrapper.style.display = "block"; // Show content
+};
+
 const AboutSection = async () => {
   loader.innerHTML = `<div class="loader-div"><span class="loader"></span></div>`
     try {

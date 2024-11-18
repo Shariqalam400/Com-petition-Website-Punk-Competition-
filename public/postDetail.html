@@ -42,114 +42,120 @@
 </head>
 
 <body>
-   <!-- header section start -->
-   <div class="header_section">
-      <div class="header_main">
-         <div class="mobile_menu">
-            <nav class="navbar navbar-expand-lg navbar-light bg-grey">
-               <div class="logo_mobile"><a href="./index.html"><img src="/assets/images/main-logo.png.png"></a></div>
-               <button class="navbar-toggler text-primary custom-toggler" type="button" data-toggle="collapse"
-                  data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                  aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
-                     <li class="nav-item">
-                        <a class="nav-link" href="./index.html">Home</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="./services.html">Winers</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link " href="./blog.html">Live Withdraw</a>
-                     </li>
-                     <li class="nav-item"></li>
-                     <a class="nav-link" href="./about.html">About</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link " href="./contact.html">Contact</a>
-                     </li>
+   <div class="loader-div" id="MainLoader">
+      <span class="loader"></span>
+   </div>
+   <div id="mainContentWrapper">
+      <!-- header section start -->
+      <div class="header_section">
+         <div class="header_main">
+            <div class="mobile_menu">
+               <nav class="navbar navbar-expand-lg navbar-light bg-grey">
+                  <div class="logo_mobile"><a href="./index.html"><img src="/assets/images/main-logo.png.png"></a></div>
+                  <button class="navbar-toggler text-primary custom-toggler" type="button" data-toggle="collapse"
+                     data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                     aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                     <div class="blur-effect-nav">
+                        <ul class="navbar-nav">
+                           <li class="nav-item">
+                              <a class="nav-link" href="index.html">Home</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="services.html">Winers</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="blog.html">Live draw</a>
+                           </li>
+                           <li class="nav-item"></li>
+                           <a class="nav-link" href="about.html">About</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link " href="contact.html">Contact</a>
+                           </li>
+                        </ul>
+                       </div>
+                  </div>
+               </nav>
+            </div>
+            <div class="container-fluid">
+               <div class="logo">
+                  <div class="imagedisplay-div">
+                     <a href="./index.html"><img class="logo-img" src="/assets/images/main-logo.png.png"></a>
+                  </div>
+               </div>
+               <div class="menu_main">
+                  <ul>
+                     <li><a href="./index.html">Home</a></li>
+                     <li><a href="./services.html">Winers</a></li>
+                     <li><a href="./blog.html">Live draw</a></li>
+                     <li><a href="./about.html">About</a></li>
+                     <li><a href="./contact.html">Contact us</a></li>
                   </ul>
                </div>
-            </nav>
+            </div>
          </div>
-         <div class="container-fluid">
-            <div class="logo">
-               <div class="imagedisplay-div">
-                  <a href="./index.html"><img class="logo-img" src="/assets/images/main-logo.png.png"></a>
+
+      </div>
+      <!-- header section end -->
+      <!-- detail page started -->
+      <div class="container">
+         <div class="content-container" id="container">
+
+         </div>
+         <div class="login-div" id="button-div">
+            <div class="login-div-2" id="Login-Logout-Div">
+               <p>To participate in the competition, you must first sign up. If you've already signed up, simply log in and purchase your ticket to get a chance to win amazing prizes. This competition offers exciting rewards, and if luck is on your side, you could even win a car! Create your account and start today!</p>
+               <div class="button-div">
+                  <button id="loginBtn">Login</button>
+                  <button id="signupBtn">Signup</button>
                </div>
             </div>
-            <div class="menu_main">
+         </div>
+         <button id="PayBtn" class="payBtn">Buy Ticket</button>
+         <h1>Pick Your Ticket</h1>
+         <div class="ticket-div" id="ticket-div">
+
+         </div>
+      </div>
+      <!-- detail page ended -->
+      <!-- footer section start -->
+      <div class="footer_section layout_padding">
+         <div class="container">
+            <div class="input_btn_main">
+               <input type="text" class="mail_text" placeholder="Enter your email" name="Enter your email">
+               <div class="subscribe_bt"><a href="#">Subscribe</a></div>
+            </div>
+            <div class="location_main">
+               <div class="call_text"><img src="/assets/images/call-icon.png"></div>
+               <div class="call_text"><a href="https://wa.me/447725016512" target="_blank">Call +44 7725 016512</a>
+               </div>
+               <div class="call_text"><img src="/assets/images/mail-icon.png"></div>
+               <div class="call_text"><a href="mailto:punkcompetitions@gmail.com">punkcompetitions@gmail.com</a></div>
+            </div>
+            <div class="social_icon">
                <ul>
-                  <li><a href="./index.html">Home</a></li>
-                  <li><a href="./services.html">Winers</a></li>
-                  <li><a href="./blog.html">Live Withdraw</a></li>
-                  <li><a href="./about.html">About</a></li>
-                  <li><a href="./contact.html">Contact us</a></li>
+                  <li><a href="#"><img src="/assets/images/fb-icon.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/twitter-icon.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/linkedin-icon.png"></a></li>
+                  <li><a href="#"><img src="/assets/images/instagram-icon.png"></a></li>
                </ul>
             </div>
          </div>
       </div>
-
-   </div>
-   <!-- header section end -->
-   <!-- detail page started -->
-   <div class="container">
-      <div class="content-container" id="container">
-
-      </div>
-      <div class="login-div" id="button-div">
-         <div class="login-div-2" id="Login-Logout-Div">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque odit vero excepturi itaque ipsum rem.
-               Mollitia atque accusamus deserunt vitae repellat, aperiam at tempora dolores explicabo quidem eos
-               officiis autem?</p>
-            <div class="button-div">
-               <button id="loginBtn">Login</button>
-               <button id="signupBtn">Signup</button>
-            </div>
+      <!-- footer section end -->
+      <!-- copyright section start -->
+      <div class="copyright_section">
+         <div class="container">
+            <p class="copyright_text">2024 All Rights Reserved. Design by <a
+                  href="https://www.linkedin.com/in/faizan-riaz-773550300?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                  target="_blank">Faizan Riaz</a></p>
          </div>
       </div>
-      <button id="PayBtn" class="payBtn">Purchase Ticket</button>
-      <h1>Tickets</h1>
-      <div class="ticket-div" id="ticket-div">
-
-      </div>
+      <!-- copyright section end -->
    </div>
-   <!-- detail page ended -->
-   <!-- footer section start -->
-   <div class="footer_section layout_padding">
-      <div class="container">
-         <div class="input_btn_main">
-            <input type="text" class="mail_text" placeholder="Enter your email" name="Enter your email">
-            <div class="subscribe_bt"><a href="#">Subscribe</a></div>
-         </div>
-         <div class="location_main">
-            <div class="call_text"><img src="/assets/images/call-icon.png"></div>
-            <div class="call_text"><a href="https://wa.me/447725016512" target="_blank">Call +44 7725 016512</a></div>
-            <div class="call_text"><img src="/assets/images/mail-icon.png"></div>
-            <div class="call_text"><a href="mailto:punkcompetitions@gmail.com">punkcompetitions@gmail.com</a></div>
-         </div>
-         <div class="social_icon">
-            <ul>
-               <li><a href="#"><img src="/assets/images/fb-icon.png"></a></li>
-               <li><a href="#"><img src="/assets/images/twitter-icon.png"></a></li>
-               <li><a href="#"><img src="/assets/images/linkedin-icon.png"></a></li>
-               <li><a href="#"><img src="/assets/images/instagram-icon.png"></a></li>
-            </ul>
-         </div>
-      </div>
-   </div>
-   <!-- footer section end -->
-   <!-- copyright section start -->
-   <div class="copyright_section">
-      <div class="container">
-         <p class="copyright_text">2024 All Rights Reserved. Design by <a
-               href="https://www.linkedin.com/in/faizan-riaz-773550300?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-               target="_blank">Faizan Riaz</a></p>
-      </div>
-   </div>
-   <!-- copyright section end -->
    <!-- Javascript files -->
    <script src="js/jquery.min.js"></script>
    <script src="js/popper.min.js"></script>

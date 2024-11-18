@@ -7,6 +7,12 @@ let phone = document.getElementById('phone')
 let mail = document.getElementById('mail')
 let massage = document.getElementById('comment')
 
+window.onload = function () {
+  let MainLoader = document.getElementById("MainLoader");
+  let mainContentWrapper = document.getElementById("mainContentWrapper");
+  MainLoader.style.display = "none"; // Hide loader
+  mainContentWrapper.style.display = "block"; // Show content
+};
 
 const sendMassage = async()=>{
    

@@ -11,6 +11,12 @@ let buttonDiv = document.getElementById("button-div")
 let PayBtn = document.getElementById("PayBtn")
 PayBtn.style.display = "none"
 
+window.onload = function () {
+  let MainLoader = document.getElementById("MainLoader");
+  let mainContentWrapper = document.getElementById("mainContentWrapper");
+  MainLoader.style.display = "none"; // Hide loader
+  mainContentWrapper.style.display = "block"; // Show content
+};
 
 const DetailPostView = async()=>{
   DetailSection.innerHTML = `<div class="loader-div"><span class="loader"></span></div>`
@@ -32,7 +38,7 @@ if (docSnap.exists()) {
                 <h1 class="title">${Title}</h1>
                 <p class="des-para">Description: <br>${Description}</p> 
                 <h2>Q: ${Question}?</h2>
-                <div class="note-div"><p class="note-para">Note: <br>To participate in the competition, complete the payment first. After payment, you will be able to answer the question and enter the competition. Only those who answer correctly will have a chance to win the prize.</p></div>
+                <div class="note-div"><p class="note-para">Note: <br>To take part in the competition, you must first complete the payment. Once the payment is processed, you will be able to answer the question and officially enter the competition. Along with your answer, please select the ticket you prefer and provide your ticket number after the payment. Only those who answer the question correctly and provide their ticket number will be eligible to win the prize.</p></div>
                 <div class="price-container"><h1 class="price"><span id="price-amount">£</span>${Amount}</h1></div> 
             </div>
         </div>`
